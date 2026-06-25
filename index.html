@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spendly</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>💰 Spendly</h1>
+    <p>Track your income & expenses effortlessly</p>
+  </header>
+
+  <section class="summary">
+    <div class="card balance">
+      <h3>Total Balance</h3>
+      <h2 id="totalbalance">₹0</h2>
+    </div>
+
+    <div class="card income">
+      <h3>Income</h3>
+      <h2 class="mainincome">₹0</h2>
+    </div>
+
+    <div class="card expense">
+      <h3>Expense</h3>
+      <h2 class="mainexpense">₹0</h2>
+    </div>
+  </section>
+
+  <section class="form-section">
+
+    <h2>Add Transaction</h2>
+
+    <form>
+
+      <div class="input-group">
+        <label>Title</label>
+        <input type="text" placeholder="Enter title">
+      </div>
+
+      <div class="input-group">
+        <label>Amount</label>
+        <input type="number" placeholder="Enter amount">
+      </div>
+
+      <div class="row">
+
+        <div class="input-group">
+          <label>Type</label>
+          <select>
+            <option>Income</option>
+            <option>Expense</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label>Category</label>
+          <select>
+            <option>Food</option>
+            <option>Shopping</option>
+            <option>Travel</option>
+            <option>Entertainment</option>
+            <option>Bills</option>
+            <option>Salary</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="input-group">
+        <label>Date</label>
+        <input type="date">
+      </div>
+
+      <button>Add Transaction</button>
+
+    </form>
+
+  </section>
+
+  <section class="controls">
+
+    <input type="text" placeholder="Search transaction...">
+
+    <select>
+      <option>All</option>
+      <option>Income</option>
+      <option>Expense</option>
+    </select>
+
+  </section>
+
+  <section class="transactions">
+
+    <div class="heading">
+      <h2>Transactions</h2>
+    </div>
+
+    <div class="transaction">
+
+      <div>
+        <h4>Pizza</h4>
+        <small>Food • 24 Jun</small>
+      </div>
+
+      <div class="right">
+
+        <span class="minus">-₹450</span>
+
+        <button>Edit</button>
+        <button>Delete</button>
+
+      </div>
+
+    </div>
+
+    <div class="transaction">
+
+      <div>
+        <h4>Salary</h4>
+        <small>Salary • 20 Jun</small>
+      </div>
+
+      <div class="right">
+
+        <span class="plus">+₹25000</span>
+
+        <button>Edit</button>
+        <button>Delete</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
