@@ -9,7 +9,12 @@ const inserter=document.querySelector(".transactions");
 function saveTransactions() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
 }
+const searchInput = document.getElementById("searchbar");
+   searchInput.addEventListener("input", render);
 
+   
+const filteredTransactions=document.querySelector("#filter");
+filteredTransactions.addEventListener("change",render);
 // render function
 function render(){
 
@@ -24,19 +29,34 @@ income.textContent="₹"+ totalincome;
    
 
     // new elements
+
+const filtervalue=filteredTransactions.value;
+const searchvalue=searchInput.value.toLowerCase();
+let filtered =transactions.filter(data => data.title.toLowerCase().includes(searchvalue));
 inserter.innerHTML="";
-    transactions.forEach(element => {
+if (filtervalue !== "All") {
+    filtered = filtered.filter(data =>
+        data.type === filtervalue
+    );
+}
+
+
+    filtered.forEach(element => {
+        const amountClass = element.type === "Income" ? "plus" : "minus";
+const sign = element.type === "Income" ? "+" : "-";
         inserter.insertAdjacentHTML("beforeend",`
           <div class="transaction">
 
       <div>
         <h4>${element.title}</h4>
-        <small>${element.category}• ${element.date}</small>
+        <small>${element.category} • ${element.date}</small>
       </div>
 
       <div class="right">
 
-        <span class="minus">${element.amount}</span>
+   <span class="${amountClass}">
+    ${sign}₹${element.amount}
+</span>
 
         <button class="edit-btn" data-id="${element.id}">Edit</button>
    <button class="delete-btn" data-id="${element.id}">Delete</button>
@@ -46,6 +66,8 @@ inserter.innerHTML="";
     </div>   
             `)
     });
+
+         
 
 }
 inserter.addEventListener("click", (e) => {
@@ -127,6 +149,7 @@ function addTransaction(e) {
 
    
     submitbtn.textContent = "Add Transaction";
+    editingid = null;
 }
 
     saveTransactions();
